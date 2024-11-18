@@ -1,4 +1,4 @@
-/* Estilo geral */
+
 body {
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ body {
 #botao-container button:active {
   background-color: #666;
 }
-/* Contêiner do jogo */
+
 #container-jogo {
   display: grid;
   grid-template-columns: repeat(20, 1fr);
@@ -45,7 +45,6 @@ body {
   background-color: #333;
 }
 
-/* Estilo do placar */
 #placar {
   display: flex;
   justify-content: center;
@@ -54,12 +53,10 @@ body {
   margin-bottom: 10px;
 }
 
-/* Estilo dos botões de controle */
 #controles {
-  display: none; /* Esconde os botões por padrão */
+  display: none; 
 }
 
-/* Exibe os botões em dispositivos móveis */
 @media (max-width: 768px) {
   #controles {
     display: flex;
@@ -83,7 +80,7 @@ body {
   #controles div {
     display: flex;
     justify-content: center;
-    gap: 5px; /* Espaçamento entre botões */
+    gap: 5px; 
   }
 
   #controles button:active {
@@ -92,13 +89,13 @@ body {
 }
 
 #reiniciar-container {
-  display: none; /* Escondido inicialmente */
+  display: none; 
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  z-index: 20; /* Sobrepõe o jogo */
+  z-index: 20; 
 }
 
 #reiniciar {
