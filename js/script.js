@@ -10,12 +10,10 @@ let corComida = getCorAleatoria();
 let pontuacao = 0;
 let intervaloJogo;
 
-// Sons do jogo
 const somComida = new Audio('./sounds/comida.wav');
 const somBotao = new Audio('./sounds/botao.mp3');
 const somMorte = new Audio('./sounds/morte.wav');
 
-// Inicializar a grade
 for (let i = 0; i < tamanhoGrade * tamanhoGrade; i++) {
   const celula = document.createElement("div");
   celula.classList.add("celula");
@@ -24,7 +22,6 @@ for (let i = 0; i < tamanhoGrade * tamanhoGrade; i++) {
 
 const celulas = Array.from(document.querySelectorAll(".celula"));
 
-// Atualizar a grade com base nas posições da cobra e comida
 function renderizar() {
   celulas.forEach(celula => celula.classList.remove("cobra", "comida", ...getTodasCoresComida()));
   cobra.forEach(segmento => {
@@ -55,7 +52,6 @@ function getTodasCoresComida() {
   return ["comida-vermelha", "comida-verde", "comida-roxa", "comida-amarela"];
 }
 
-// Lógica para mover a cobra
 function moverCobra() {
   const cabeca = { ...cobra[0] };
   cabeca.x += direcao.x;
@@ -91,7 +87,6 @@ function verificarColisoes() {
   }
 }
 
-// Função para finalizar o jogo
 function fimDeJogo() {
   somMorte.play();
   clearInterval(intervaloJogo);
@@ -99,10 +94,9 @@ function fimDeJogo() {
   reiniciarBotao.style.display = "block";
 }
 
-// Função para iniciar o jogo
 function iniciarJogo() {
-  iniciarBotao.style.display = "none"; // Esconde o botão "Iniciar"
-  reiniciarBotao.style.display = "none"; // Garantir que o botão "Reiniciar" também fique escondido"Reiniciar"
+  iniciarBotao.style.display = "none";
+  reiniciarBotao.style.display = "none";
   cobra = [{ x: 10, y: 10 }];
   direcao = { x: 0, y: 1 };
   comida = getPosicaoAleatoriaComida();
@@ -117,13 +111,11 @@ function iniciarJogo() {
   }, 200);
 }
 
-// Função para reiniciar o jogo
 function reiniciarJogo() {
   clearInterval(intervaloJogo);
-  iniciarJogo(); // Reutiliza a lógica de iniciar
+  iniciarJogo();
 }
 
-// Controles do teclado
 document.addEventListener("keydown", evento => {
   switch (evento.key) {
     case "ArrowUp":
@@ -145,7 +137,6 @@ document.addEventListener("keydown", evento => {
   }
 });
 
-// Controles de toque (mobile)
 document.getElementById("cima").addEventListener("click", () => {
   if (direcao.y === 0) direcao = { x: 0, y: -1 };
   tocarSomBotao();
@@ -163,6 +154,5 @@ document.getElementById("direita").addEventListener("click", () => {
   tocarSomBotao();
 });
 
-// Vincular os eventos de clique aos botões
 iniciarBotao.addEventListener("click", iniciarJogo);
 reiniciarBotao.addEventListener("click", reiniciarJogo);
